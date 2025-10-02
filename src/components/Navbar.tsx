@@ -6,7 +6,7 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 export function Navbar() {
   return (
     <div className="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-background/60 bg-background/75 border-b border-white/10">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8 h-16 flex items-center justify-between">
+      <div className="w-full px-4 sm:px-6 md:px-8 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <span className="inline-block h-3 w-3 rounded-sm bg-[--color-accent]"></span>
           <span className="text-[22px] font-semibold tracking-tight">ToshiStrategy</span>

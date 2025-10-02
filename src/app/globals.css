@@ -5,9 +5,9 @@
   --foreground: #e6f0ff;
   --card: #0b1f36;
   --muted: #0a1a2b;
-  --accent: #1e90ff;
-  --accent-600: #1773cc;
-  --accent-700: #125aa3;
+  --accent: #0025ff; /* brand blue per request */
+  --accent-600: #001fcc;
+  --accent-700: #00199e;
   --ring: #60a5fa;
 }
 
@@ -20,7 +20,7 @@
   --color-accent-600: var(--accent-600);
   --color-accent-700: var(--accent-700);
   --color-ring: var(--ring);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-brand, var(--font-geist-sans));
   --font-mono: var(--font-geist-mono);
   --radius-sm: 10px;
   --radius-md: 14px;
@@ -42,11 +42,83 @@ body {
 
 html { scroll-behavior: smooth; }
 
+.app-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Section backgrounds using image-set to allow unknown extensions */
+.bg-hero {
+  background-image:
+    url('/images/hero.webp'),
+    url('/images/hero.jpg'),
+    url('/images/hero.png'),
+    url('/hero.webp'),
+    url('/hero.jpg'),
+    url('/hero.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-vision {
+  background-image:
+    url('/images/thevision.webp'),
+    url('/images/thevision.jpg'),
+    url('/images/thevision.png'),
+    url('/thevision.webp'),
+    url('/thevision.jpg'),
+    url('/thevision.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-footer {
+  background-image: url('/images/footer.jpeg');
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-data-blurb {
+  background-image: url('/images/data.jpeg');
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-strategy-blurb {
+  background-image: url('/images/diamondhand.jpeg');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Dark overlay helper */
+.with-overlay {
+  position: relative;
+}
+.with-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(2,6,23,0.2), rgba(2,6,23,0.2));
+}
+
+/* Stronger overlay variant for readability on busy images */
+.overlay-strong::before {
+  background: linear-gradient(180deg, rgba(2,6,23,0.55), rgba(2,6,23,0.55));
+}
+.with-overlay > * {
+  position: relative;
+  z-index: 1;
+}
+
 .card {
-  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
-  border: 1px solid rgba(96, 165, 250, 0.2);
+  background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.06));
+  border: 1px solid rgba(96, 165, 250, 0.35);
   border-radius: var(--radius-md);
-  box-shadow: 0 8px 24px rgba(2, 6, 23, 0.5);
+  box-shadow: 0 8px 24px rgba(2, 6, 23, 0.35);
 }
 
 .btn-primary {
@@ -57,4 +129,38 @@ html { scroll-behavior: smooth; }
 
 .btn-primary:hover {
   background: linear-gradient(180deg, var(--accent-600), var(--accent-700));
+}
+
+/* Parallax helpers */
+.parallax-hero {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Rising arrows background */
+.arrows-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5; /* above page content, below navbar (z-40) */
+}
+
+.arrows-canvas svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+@keyframes rise {
+  0% { transform: translateY(10%); opacity: 0; }
+  10% { opacity: .8; }
+  100% { transform: translateY(-110%); opacity: 0; }
+}
+
+.arrow {
+  stroke: var(--accent);
+  stroke-width: 2;
+  opacity: .35;
+  animation: rise linear infinite;
 }

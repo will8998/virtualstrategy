@@ -8,7 +8,7 @@ export function Dashboard() {
 
   return (
     <div className="py-8 sm:py-10 md:py-12">
-      <header className="mb-6">
+      <header className="mb-6 app-container">
         <div className="inline-flex items-center gap-2 text-xs px-2 py-1 rounded-full bg-[--color-muted] border border-white/10 mb-3">
           <span className="inline-block h-1.5 w-1.5 rounded-full bg-[--color-accent]"></span>
           Live holdings
@@ -32,7 +32,7 @@ export function Dashboard() {
         </div>
       </header>
 
-      <section className="card p-4 sm:p-5 md:p-6 mb-6">
+      <section className="card p-4 sm:p-5 md:p-6 mb-6 app-container">
         <div className="flex items-center justify-between text-xs text-white/70">
           <span>Progress to Next Purchase</span>
           <span>Current rewards: 0.01 ETH</span>
@@ -51,7 +51,7 @@ export function Dashboard() {
         </div>
       </section>
 
-      <section className="mb-6">
+      <section className="mb-6 app-container">
         <h3 className="sr-only">Orders</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {[4, 3, 2, 1].map((num) => (
@@ -79,7 +79,7 @@ export function Dashboard() {
         </div>
       </section>
 
-      <section className="card p-3 md:p-4">
+      <section className="card p-3 md:p-4 app-container">
         <div className="flex items-center justify-between text-xs text-white/60 mb-2">
           <span>TOSHISTR Chart</span>
           <span className="opacity-70">Powered by GeckoTerminal</span>
@@ -93,7 +93,7 @@ export function Dashboard() {
         </div>
       </section>
 
-      <footer className="mt-8 card p-4 text-xs text-white/60 flex items-center justify-between">
+      <footer className="mt-8 card p-4 text-xs text-white/60 flex items-center justify-between app-container">
         <span>Toshi Strategy — The perpetual memecoin machine</span>
         <a className="hover:underline" href="#">Telegram</a>
       </footer>

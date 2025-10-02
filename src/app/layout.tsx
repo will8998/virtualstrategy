@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Noto_Serif_JP } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/Providers";
 import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
+import { Arrows } from "@/components/Arrows";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,6 +14,14 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+// Samurai-style Japanese serif for brand look
+const brandSerif = Noto_Serif_JP({
+  variable: "--font-brand",
+  weight: ["400","600","700"],
+  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -26,12 +36,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${brandSerif.variable} antialiased`}>
         <Providers>
+          <Arrows />
           <Navbar />
-          <main className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
+          <main className="w-full relative z-10">
             {children}
           </main>
+          <Footer />
         </Providers>
       </body>
     </html>
