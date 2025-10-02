@@ -3,14 +3,14 @@
 import { ReactNode } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { WagmiProvider } from "wagmi";
-import { mainnet } from "wagmi/chains";
+import { base } from "wagmi/chains";
 import { RainbowKitProvider, getDefaultConfig, darkTheme } from "@rainbow-me/rainbowkit";
 import "@rainbow-me/rainbowkit/styles.css";
 
 const wagmiConfig = getDefaultConfig({
   appName: "ToshiStrategy",
   projectId: "demo-toshi-strategy", // replace with WalletConnect Project ID
-  chains: [mainnet],
+  chains: [base],
   ssr: true,
 });
 

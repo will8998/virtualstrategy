@@ -1,10 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import { useOrders, useStrategyStatus } from "@/lib/hooks";
+import { formatEther } from "viem";
 import { TrendingUp, Coins, Wallet } from "lucide-react";
 
 export function Dashboard() {
   const [progressPercent] = useState(8.6);
+  const { data: status } = useStrategyStatus();
+  const { data: orders } = useOrders();
 
   return (
     <div className="py-8 sm:py-10 md:py-12">
@@ -20,13 +24,13 @@ export function Dashboard() {
               <div className="flex items-center gap-2 text-sm text-white/80">
                 <Wallet size={16} /> ETH
               </div>
-              <div className="text-2xl font-semibold mt-1">0.442</div>
+              <div className="text-2xl font-semibold mt-1">{status ? Number(formatEther(status.eth)).toFixed(3) : "-"}</div>
             </div>
             <div className="rounded-xl bg-[--color-muted] p-4 border border-white/10">
               <div className="flex items-center gap-2 text-sm text-white/80">
                 <Coins size={16} /> TOSHI
               </div>
-              <div className="text-2xl font-semibold mt-1">8.97B</div>
+              <div className="text-2xl font-semibold mt-1">{status ? status.toshi.toString() : "-"}</div>
             </div>
           </div>
         </div>
@@ -54,17 +58,17 @@ export function Dashboard() {
       <section className="mb-6 app-container">
         <h3 className="sr-only">Orders</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {[4, 3, 2, 1].map((num) => (
-            <div key={num} className="card p-4">
+          {(orders?.active ?? []).map((o) => (
+            <div key={o.id} className="card p-4">
               <div className="flex items-center justify-between text-sm mb-2">
-                <span className="font-medium">#{num}</span>
+                <span className="font-medium">#{o.id}</span>
                 <span className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">Open</span>
               </div>
               <dl className="text-sm text-white/80 space-y-1">
-                <div className="flex justify-between"><dt>ETH spent</dt><dd>5.0{num}</dd></div>
-                <div className="flex justify-between"><dt>TOSHI bought</dt><dd>2.2{num}B</dd></div>
-                <div className="flex justify-between"><dt>Est. value (now)</dt><dd>5.0{num}2</dd></div>
-                <div className="flex justify-between"><dt>Target to sell</dt><dd>6.0{num}3</dd></div>
+                <div className="flex justify-between"><dt>ETH spent</dt><dd>{Number(formatEther(o.ethSpent)).toFixed(3)}</dd></div>
+                <div className="flex justify-between"><dt>TOSHI bought</dt><dd>{o.toshiBought.toString()}</dd></div>
+                <div className="flex justify-between"><dt>Entry price</dt><dd>{o.entryPrice.toString()}</dd></div>
+                <div className="flex justify-between"><dt>Target to sell</dt><dd>+20%</dd></div>
               </dl>
               <div className="mt-3">
                 <div className="w-full h-1.5 bg-black/30 rounded-full overflow-hidden">
