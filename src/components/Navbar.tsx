@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 export function Navbar() {
   return (
@@ -24,7 +23,14 @@ export function Navbar() {
           >
             Enter App
           </a>
-          <ConnectButton chainStatus="icon" showBalance={false} />
+          <a
+            href="https://dexscreener.com/base/0xc4da0cb0e9cc712ab8b2b90d282bd55a05518d76"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary text-sm px-4 py-2"
+          >
+            Buy
+          </a>
         </div>
       </div>
     </div>
