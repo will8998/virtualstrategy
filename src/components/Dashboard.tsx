@@ -105,13 +105,13 @@ export function Dashboard() {
       <section className="card p-3 md:p-4 app-container">
         <div className="flex items-center justify-between text-xs text-white/60 mb-2">
           <span>TOSHISTR Chart</span>
-          <span className="opacity-70">Powered by GeckoTerminal</span>
+          <span className="opacity-70">Powered by Dexscreener</span>
         </div>
         <div className="aspect-[16/9] w-full overflow-hidden rounded-md border border-white/10">
           <iframe
             className="w-full h-full"
-            src="https://www.geckoterminal.com/eth/pools/0x0000000000000000000000000000000000000000?embed=1&info=0"
-            title="GeckoTerminal"
+            src="https://dexscreener.com/base/0xc4da0cb0e9cc712ab8b2b90d282bd55a05518d76?embed=1&theme=dark"
+            title="Dexscreener"
           />
         </div>
       </section>
