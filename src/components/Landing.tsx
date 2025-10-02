@@ -1,6 +1,5 @@
 "use client";
 
-import { Coins, Wallet } from "lucide-react";
 import { ZkSection } from "@/components/ZkSection";
 
 export function Landing() {

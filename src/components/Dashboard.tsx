@@ -82,7 +82,7 @@ export function Dashboard() {
             onClick={async () => {
               try {
                 setTxState("pending");
-                const hash = await trigger();
+                const _hash = await trigger();
                 setTxState("success");
               } catch (e) {
                 console.error(e);
