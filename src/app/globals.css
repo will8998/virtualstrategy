@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+:root {
+  --background: #06121f;
+  --foreground: #e6f0ff;
+  --card: #0b1f36;
+  --muted: #0a1a2b;
+  --accent: #1e90ff;
+  --accent-600: #1773cc;
+  --accent-700: #125aa3;
+  --ring: #60a5fa;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-600: var(--accent-600);
+  --color-accent-700: var(--accent-700);
+  --color-ring: var(--ring);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 16px;
+}
+
+/* Force dark blue theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #06121f;
+    --foreground: #e6f0ff;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+html { scroll-behavior: smooth; }
+
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  border: 1px solid rgba(96, 165, 250, 0.2);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 24px rgba(2, 6, 23, 0.5);
+}
+
+.btn-primary {
+  background: linear-gradient(180deg, var(--accent), var(--accent-600));
+  color: white;
+  border-radius: 12px;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(180deg, var(--accent-600), var(--accent-700));
+}
