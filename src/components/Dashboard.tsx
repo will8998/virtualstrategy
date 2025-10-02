@@ -74,33 +74,7 @@ export function Dashboard() {
         </div>
       </section>
 
-      <section className="mb-6 app-container">
-        <h3 className="sr-only">Orders</h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {(orders?.active ?? []).map((o) => (
-            <div key={o.id} className="card p-4">
-              <div className="flex items-center justify-between text-sm mb-2">
-                <span className="font-medium">#{o.id}</span>
-                <span className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">Open</span>
-              </div>
-              <dl className="text-sm text-white/80 space-y-1">
-                <div className="flex justify-between"><dt>ETH spent</dt><dd>{Number(formatEther(o.ethSpent)).toFixed(3)}</dd></div>
-                <div className="flex justify-between"><dt>TOSHI bought</dt><dd>{o.toshiBought.toString()}</dd></div>
-                <div className="flex justify-between"><dt>Entry price</dt><dd>{o.entryPrice.toString()}</dd></div>
-                <div className="flex justify-between"><dt>Target to sell</dt><dd>+20%</dd></div>
-              </dl>
-              <div className="mt-3">
-                <div className="w-full h-1.5 bg-black/30 rounded-full overflow-hidden">
-                  <div className="h-1.5 bg-[--color-accent]" style={{ width: "84%" }} />
-                </div>
-                <button className="mt-3 w-full py-2 text-sm rounded-md bg-white/5 border border-white/10 hover:bg-white/10">
-                  Sell
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* Orders section removed per request */}
 
       <section className="card p-3 md:p-4 app-container">
         <div className="flex items-center justify-between text-xs text-white/60 mb-2">
