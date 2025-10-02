@@ -9,7 +9,7 @@ export function Navbar() {
         {/* Brand */}
         <Link href="/" className="flex items-center gap-2">
           <span className="inline-block h-3 w-3 rounded-sm bg-[--color-accent]"></span>
-          <span className="text-[22px] font-semibold tracking-tight">ToshiStrategy</span>
+          <span className="text-[22px] font-semibold tracking-tight">VirtualStrategy</span>
         </Link>
 
         {/* Center nav + search */}

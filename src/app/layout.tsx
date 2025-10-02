@@ -24,7 +24,7 @@ const brandSerif = Noto_Serif_JP({
 });
 
 export const metadata: Metadata = {
-  title: "ToshiStrategy",
+  title: "VirtualStrategy",
   description: "The perpetual memecoin machine",
 };
 
