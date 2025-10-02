@@ -11,39 +11,62 @@ export function Dashboard() {
   const { data: orders } = useOrders();
   const { trigger } = useBuyTrigger();
   const [txState, setTxState] = useState<"idle"|"pending"|"success"|"error">("idle");
+  const [activeChart, setActiveChart] = useState<"ETH"|"VIRTUAL">("ETH");
 
   return (
     <div className="py-8 sm:py-10 md:py-12">
-      <header className="mb-6 app-container">
+      {/* Live holdings moved from Home */}
+      <section className="app-container">
         <div className="inline-flex items-center gap-2 text-xs px-2 py-1 rounded-full bg-[--color-muted] border border-white/10 mb-3">
           <span className="inline-block h-1.5 w-1.5 rounded-full bg-[--color-accent]"></span>
           Live holdings
         </div>
         <div className="card p-4 sm:p-5 md:p-6">
-          <h2 className="text-lg sm:text-xl font-semibold mb-4">Toshi Strategy is currently holding</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="rounded-xl bg-[--color-muted] p-4 border border-white/10">
+          <h2 className="text-lg sm:text-xl font-semibold mb-4">Virtuals Strategy is currently holding</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 auto-rows-fr">
+            <div className="rounded-xl bg-[--color-muted] p-4 border border-white/10 h-full">
               <div className="flex items-center gap-2 text-sm text-white/80">
                 <Wallet size={16} /> ETH
               </div>
-              <div className="text-2xl font-semibold mt-1">{status ? Number(formatEther(status.eth)).toFixed(3) : "-"}</div>
+              <div className="text-2xl font-semibold mt-1">{status ? Number(formatEther(status.eth)).toFixed(3) : "1.711"}</div>
             </div>
-            <div className="rounded-xl bg-[--color-muted] p-4 border border-white/10">
+            <div className="rounded-xl bg-[--color-muted] p-4 border border-white/10 h-full">
               <div className="flex items-center gap-2 text-sm text-white/80">
-                <Coins size={16} /> TOSHI
+                <Coins size={16} /> VIRTUAL
               </div>
-              <div className="text-2xl font-semibold mt-1">{status ? status.toshi.toString() : "-"}</div>
+              <div className="text-2xl font-semibold mt-1">{status ? status.toshi.toString() : "2.24B"}</div>
+            </div>
+            <div className="rounded-xl bg-[--color-muted] p-4 border border-white/10 h-full">
+              <div className="flex items-center justify-between text-xs text-white/70">
+                <span>Progress to Next Purchase</span>
+                <span>{progressPercent}%</span>
+              </div>
+              <div className="mt-3 h-2 rounded-full bg-black/30 overflow-hidden">
+                <div className="h-2 bg-[--color-accent]" style={{ width: `${progressPercent}%` }} />
+              </div>
+              <p className="mt-3 text-xs text-white/70">
+                When the machine acquires the missing <b>3.299 ETH</b>, the contract autobuys VIRTUAL.
+              </p>
+            </div>
+            <div className="rounded-xl bg-[--color-muted] p-4 border border-white/10 h-full">
+              <div className="flex items-center justify-between text-xs text-white/70">
+                <span>Current rewards</span>
+                <span className="inline-flex items-center text-[11px] px-2 py-0.5 rounded-full bg-white/5 border border-white/10">{progressPercent}%</span>
+              </div>
+              <div className="text-2xl font-semibold mt-2">0.01 ETH</div>
             </div>
           </div>
         </div>
-      </header>
+      </section>
+
+      {/* Old header removed; consolidated into live holdings above */}
 
       <section className="card p-4 sm:p-5 md:p-6 mb-6 app-container">
         <div className="flex items-center justify-between text-xs text-white/70">
           <span>Progress to Next Purchase</span>
           <span>Current rewards: 0.01 ETH</span>
         </div>
-        <div className="mt-3 h-10 rounded-lg bg-[--color-muted] border border-white/10 flex items-center px-3">
+        <div className="mt-3 h-12 rounded-lg bg-[--color-muted] border border-white/10 flex items-center px-3">
           <span className="text-xs text-white/70">When the machine acquires the missing <b>4.568 ETH</b>, the first entity to trigger the functions below will process the mechanism forward and earn a reward.</span>
         </div>
         <div className="mt-4">
@@ -54,7 +77,7 @@ export function Dashboard() {
             />
           </div>
           <button
-            className="btn-primary mt-3 w-full py-2.5 disabled:opacity-50"
+            className="btn-primary mt-3 w-full py-3 disabled:opacity-50"
             disabled={txState === "pending"}
             onClick={async () => {
               try {
@@ -77,23 +100,41 @@ export function Dashboard() {
       {/* Orders section removed per request */}
 
       <section className="card p-3 md:p-4 app-container">
-        <div className="flex items-center justify-between text-xs text-white/60 mb-2">
-          <span>TOSHISTR Chart</span>
-          <span className="opacity-70">Powered by Dexscreener</span>
+        <div className="flex items-center justify-between text-xs text-white/60 mb-3">
+          <span>Market Chart</span>
+          <div className="inline-flex rounded-full border border-white/10 bg-white/5 p-1">
+            <button
+              className={`px-3 py-1 rounded-full text-xs ${activeChart === "ETH" ? "bg-[--color-accent] text-white" : "hover:bg-white/10"}`}
+              onClick={() => setActiveChart("ETH")}
+            >
+              ETH
+            </button>
+            <button
+              className={`px-3 py-1 rounded-full text-xs ${activeChart === "VIRTUAL" ? "bg-[--color-accent] text-white" : "hover:bg-white/10"}`}
+              onClick={() => setActiveChart("VIRTUAL")}
+            >
+              VIRTUAL
+            </button>
+          </div>
         </div>
         <div className="aspect-[16/9] w-full overflow-hidden rounded-md border border-white/10">
-          <iframe
-            className="w-full h-full"
-            src="https://dexscreener.com/base/0xc4da0cb0e9cc712ab8b2b90d282bd55a05518d76?embed=1&theme=dark"
-            title="Dexscreener"
-          />
+          {activeChart === "ETH" ? (
+            <iframe
+              className="w-full h-full"
+              src="https://www.tradingview.com/widgetembed/?symbol=COINBASE:ETHUSD&interval=60&hidesidetoolbar=1&symboledit=1&saveimage=0&toolbarbg=rgba(0,0,0,0)&hideideas=1&studies=[]&theme=dark&style=1&timezone=Etc/UTC&withdateranges=1&allow_symbol_change=1#"
+              title="ETH Chart"
+            />
+          ) : (
+            <iframe
+              className="w-full h-full"
+              src="https://dexscreener.com/base/0xc4da0cb0e9cc712ab8b2b90d282bd55a05518d76?embed=1&theme=dark"
+              title="Dexscreener"
+            />
+          )}
         </div>
       </section>
 
-      <footer className="mt-8 card p-4 text-xs text-white/60 flex items-center justify-between app-container">
-        <span>Toshi Strategy — The perpetual memecoin machine</span>
-        <a className="hover:underline" href="#">Telegram</a>
-      </footer>
+      <div className="h-6" />
     </div>
   );
 }
