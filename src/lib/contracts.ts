@@ -5,8 +5,9 @@ export const NETWORK = {
 };
 
 export const ADDRESSES = {
-  contract: "0x0000000000000000000000000000000000000000", // TODO: replace after deploy
+  contract: "0xC53341BDe576085aE2E59B4dF53CEEaA9d993cC0", // Strategy contract (Base)
   toshi: "0xAC1Bd2486aAf3B5C0fc3Fd868558b082a531B2B4",
+  tostr: "0x0000000000000000000000000000000000000000", // TODO: set TOSTR token address when available
   dead: "0x000000000000000000000000000000000000dEaD",
   pool: "0x4b0Aaf3EBb163dd45F663b38b6d93f6093EBC2d3",
 };
@@ -39,6 +40,10 @@ export const STRATEGY_ABI: Abi = [
     { name: "ethReceived", type: "uint256", indexed: false },
     { name: "profit", type: "uint256", indexed: false },
   ] },
+  // plausible public functions to advance machine
+  { type: "function", name: "triggerBuy", stateMutability: "nonpayable", inputs: [], outputs: [] },
+  { type: "function", name: "process", stateMutability: "nonpayable", inputs: [], outputs: [] },
+  { type: "function", name: "buy", stateMutability: "nonpayable", inputs: [], outputs: [] },
 ];
 
 export const V3_POOL_ABI: Abi = [

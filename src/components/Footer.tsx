@@ -1,6 +1,6 @@
 "use client";
 
-import { Github, MessageCircle, Twitter } from "lucide-react";
+import { Twitter } from "lucide-react";
 
 export function Footer() {
   return (
@@ -13,14 +13,8 @@ export function Footer() {
             <p className="text-white/70 mt-2 max-w-md">The perpetual memecoin machine. Join the community and help steer the machine forward.</p>
           </div>
           <div className="md:col-span-2 flex flex-wrap gap-3 md:justify-end">
-            <a href="#" className="btn-primary inline-flex items-center gap-2 px-5 py-3">
-              <MessageCircle size={18} /> Telegram
-            </a>
-            <a href="#" className="inline-flex items-center gap-2 px-5 py-3 rounded-md border border-white/10 hover:bg-white/5">
-              <Twitter size={18} /> X
-            </a>
-            <a href="#" className="inline-flex items-center gap-2 px-5 py-3 rounded-md border border-white/10 hover:bg-white/5">
-              <Github size={18} /> GitHub
+            <a href="https://x.com/toshi_strategy" target="_blank" rel="noopener noreferrer" className="btn-primary inline-flex items-center gap-2 px-5 py-3">
+              <Twitter size={18} /> @toshi_strategy
             </a>
           </div>
         </div>

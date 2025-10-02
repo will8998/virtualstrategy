@@ -1,14 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { useOrders, useStrategyStatus } from "@/lib/hooks";
+import { useOrders, useStrategyStatus, useBuyTrigger } from "@/lib/hooks";
 import { formatEther } from "viem";
-import { TrendingUp, Coins, Wallet } from "lucide-react";
+import { Coins, Wallet } from "lucide-react";
 
 export function Dashboard() {
   const [progressPercent] = useState(8.6);
   const { data: status } = useStrategyStatus();
   const { data: orders } = useOrders();
+  const { trigger } = useBuyTrigger();
+  const [txState, setTxState] = useState<"idle"|"pending"|"success"|"error">("idle");
 
   return (
     <div className="py-8 sm:py-10 md:py-12">
@@ -51,7 +53,24 @@ export function Dashboard() {
               style={{ width: `${progressPercent}%` }}
             />
           </div>
-          <button className="btn-primary mt-3 w-full py-2.5">Buy</button>
+          <button
+            className="btn-primary mt-3 w-full py-2.5 disabled:opacity-50"
+            disabled={txState === "pending"}
+            onClick={async () => {
+              try {
+                setTxState("pending");
+                const hash = await trigger();
+                setTxState("success");
+              } catch (e) {
+                console.error(e);
+                setTxState("error");
+              } finally {
+                setTimeout(() => setTxState("idle"), 4000);
+              }
+            }}
+          >
+            {txState === "pending" ? "Processing…" : txState === "success" ? "Buy submitted" : txState === "error" ? "Failed - retry" : "Buy"}
+          </button>
         </div>
       </section>
 
