@@ -116,6 +116,13 @@ html { scroll-behavior: smooth; }
   z-index: 2;
 }
 
+/* Ensure any absolute child (like hero content) stays over the video/overlay */
+.with-overlay > .absolute {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
 /* Ensure hero background video sits under overlay/content */
 .with-overlay > .hero-video {
   z-index: 0;
