@@ -2,7 +2,7 @@
 
 export function ZkSection() {
   return (
-    <section className="app-container py-10 md:py-14">
+    <section id="story" className="app-container py-10 md:py-14">
       <div className="zk-section rounded-xl overflow-hidden">
         <div className="zk-grid">
           {/* How it works (full-width) */}
