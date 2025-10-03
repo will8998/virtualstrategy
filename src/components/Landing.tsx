@@ -36,7 +36,7 @@ export function Landing() {
           loop
           playsInline
         />
-        <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 text-center flex flex-col items-center justify-center h-full min-h-full">
+        <div className="absolute inset-0 w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 text-center flex flex-col items-center justify-center z-10">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold leading-tight">
             <span className="opacity-90">The Perpetual</span>
             <br />
