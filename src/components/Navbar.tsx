@@ -18,7 +18,7 @@ export function Navbar() {
         <div className="hidden lg:flex items-center gap-3">
           <Link href="/" className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm hover:bg-white/10">Home</Link>
           <a
-            href="https://dexscreener.com/base/"
+            href="https://dexscreener.com/base/0x156053D0F9d842149164C9a8A595D1E0E1c41eEA"
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 py-2 rounded-full bg-transparent border border-white/10 text-sm hover:bg-white/5"
@@ -32,7 +32,7 @@ export function Navbar() {
           <Link href="/dashboard" className="hidden sm:inline-flex text-sm px-4 py-2 rounded-full border border-white/15 bg-white/5 hover:bg-white/10">View Dashboard</Link>
           {/* Butler button removed */}
           <a
-            href="https://dexscreener.com"
+            href="https://app.uniswap.org/swap?outputCurrency=0x156053D0F9d842149164C9a8A595D1E0E1c41eEA&chain=base"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex text-sm px-4 py-2 rounded-full bg-[--color-accent] hover:opacity-90"

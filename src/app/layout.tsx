@@ -27,7 +27,11 @@ export const metadata: Metadata = {
   title: "VirtualStrategy",
   description: "The perpetual memecoin machine",
   icons: {
-    icon: "/favicon.jpg",
+    icon: [
+      { rel: "icon", url: "/favicon.jpg" },
+      { rel: "shortcut icon", url: "/favicon.jpg" },
+      { rel: "apple-touch-icon", url: "/favicon.jpg" },
+    ],
   },
 };
 
