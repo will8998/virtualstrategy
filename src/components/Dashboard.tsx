@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { useOrders, useStrategyStatus, useBuyTrigger } from "@/lib/hooks";
 import { formatEther } from "viem";
 import { Coins, Wallet, Flame, CheckCircle2, ArrowRightLeft } from "lucide-react";
@@ -13,13 +13,6 @@ export function Dashboard() {
   const [txState, setTxState] = useState<"idle"|"pending"|"success"|"error">("idle");
   const [activeChart, setActiveChart] = useState<"ETH"|"VIRTUAL">("ETH");
   const [tab, setTab] = useState<"active"|"sold">("active");
-
-  const burnedDisplay = useMemo(() => {
-    if (!status) return "7.32M"; // placeholder similar to screenshot
-    // Display in millions with 2 decimals
-    const millions = Number(status.burned) / 1_000_000n;
-    return `${millions.toString()}M`;
-  }, [status]);
 
   return (
     <div className="py-8 sm:py-10 md:py-12">
