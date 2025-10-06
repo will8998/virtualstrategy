@@ -18,7 +18,7 @@ export function Navbar() {
         <div className="hidden lg:flex items-center gap-3">
           <Link href="/" className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm hover:bg-white/10">Home</Link>
           <a
-            href="https://dexscreener.com/base/0xc4da0cb0e9cc712ab8b2b90d282bd55a05518d76"
+            href="https://dexscreener.com/base/"
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 py-2 rounded-full bg-transparent border border-white/10 text-sm hover:bg-white/5"
