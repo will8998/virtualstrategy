@@ -1,6 +1,7 @@
 "use client";
 
 import { ZkSection } from "@/components/ZkSection";
+import Image from "next/image";
 
 export function Landing() {
   return (
@@ -10,19 +11,19 @@ export function Landing() {
         <div className="app-container py-2 grid grid-cols-2 md:grid-cols-4 gap-2">
           <div className="flex items-center justify-between rounded-full bg-white/5 border border-white/10 px-3 py-1.5">
             <span className="text-xs text-white/70">ETH</span>
-            <span className="text-sm font-semibold">1.711</span>
+            <span className="text-sm font-semibold">0</span>
           </div>
           <div className="flex items-center justify-between rounded-full bg-white/5 border border-white/10 px-3 py-1.5">
             <span className="text-xs text-white/70">VIRTUAL</span>
-            <span className="text-sm font-semibold">2.24B</span>
+            <span className="text-sm font-semibold">0</span>
           </div>
           <div className="flex items-center justify-between rounded-full bg-white/5 border border-white/10 px-3 py-1.5">
             <span className="text-xs text-white/70">Progress</span>
-            <span className="text-sm font-semibold">8.6%</span>
+            <span className="text-sm font-semibold">0%</span>
           </div>
           <div className="flex items-center justify-between rounded-full bg-white/5 border border-white/10 px-3 py-1.5">
             <span className="text-xs text-white/70">Rewards</span>
-            <span className="text-sm font-semibold">0.01 ETH</span>
+            <span className="text-sm font-semibold">0 ETH</span>
           </div>
         </div>
       </section>
@@ -37,11 +38,7 @@ export function Landing() {
           playsInline
         />
         <div className="absolute inset-0 w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 text-center flex flex-col items-center justify-center z-10">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold leading-tight">
-            <span className="opacity-90">The Perpetual</span>
-            <br />
-            <span className="lightsaber-text">Virtuals Machine</span>
-          </h1>
+          <Image src="/logo.png" alt="VirtualStrategy" width={600} height={200} className="w-[70%] max-w-[680px] h-auto object-contain drop-shadow-lg" />
           <p className="mt-6 text-white/80 max-w-2xl mx-auto">
             Automated buys, smart profit-taking, and deflationary burns—on repeat.
           </p>
