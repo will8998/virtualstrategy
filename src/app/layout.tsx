@@ -26,6 +26,9 @@ const brandSerif = Noto_Serif_JP({
 export const metadata: Metadata = {
   title: "VirtualStrategy",
   description: "The perpetual memecoin machine",
+  icons: {
+    icon: "/favicon.jpg",
+  },
 };
 
 export default function RootLayout({
